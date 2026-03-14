@@ -51,6 +51,7 @@
     }
 
     body::after {
+      /* botanical / bamboo atmosphere layer */
       content: "";
       position: fixed;
       inset: 0;
@@ -63,7 +64,8 @@
         radial-gradient(circle at 10% 70%, rgba(170,184,150,.18), transparent 20%),
         radial-gradient(circle at 30% 15%, rgba(184,156,124,.16), transparent 22%),
         linear-gradient(120deg, transparent 0 82%, rgba(150,170,130,.10) 82% 84%, transparent 84%),
-        linear-gradient(45deg, transparent 0 88%, rgba(184,156,124,.08) 88% 90%, transparent 90%);
+        linear-gradient(45deg, transparent 0 88%, rgba(184,156,124,.08) 88% 90%, transparent 90%),
+        repeating-linear-gradient(120deg, rgba(120,150,120,.04) 0px, rgba(120,150,120,.04) 2px, transparent 2px, transparent 40px);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -103,6 +105,7 @@
     }
 
     .nav-shell {
+      padding-left:140px;
       border-radius: 999px;
       padding: 14px 20px;
       display: flex;
@@ -123,28 +126,30 @@
     }
 
     .brand-mark {
-      width: 168px;
-      min-width: 168px;
-      height: 92px;
-      border-radius: 22px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(246,241,234,.9));
-      border: 1px solid rgba(255,255,255,.8);
-      box-shadow: 0 18px 36px rgba(44,56,49,.10);
-      margin-right: 14px;
-      padding: 10px;
+      display:none;
     }
 
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      border-radius: 14px;
-      filter: saturate(1.02) contrast(1.02);
+    .floating-logo{
+      position:fixed;
+      top:22px;
+      left:22px;
+      width:420px;
+      max-width:42vw;
+      z-index:60;
+      background:rgba(255,255,255,.88);
+      border-radius:32px;
+      padding:12px;
+      box-shadow:0 20px 50px rgba(44,56,49,.18);
+      border:1px solid rgba(255,255,255,.95);
+    }
+
+    .floating-logo img{
+      filter:drop-shadow(0 6px 10px rgba(0,0,0,.08));
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      display:block;
+      border-radius:20px;
     }
 
     .brand-text {
@@ -333,6 +338,16 @@
       border-radius: 30px;
       overflow: hidden;
       box-shadow: var(--shadow-soft);
+    }
+
+    .hero-image::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(120,160,120,.15), transparent 45%),
+        radial-gradient(circle at 90% 30%, rgba(170,200,150,.12), transparent 45%);
     }
 
     .hero-image::after {
@@ -780,6 +795,9 @@
   </style>
 </head>
 <body>
+  <div class="floating-logo">
+    <img src="april-logo.png" alt="April Winsbury LMT Logo" />
+  </div>
   <header>
     <div class="container">
       <div class="nav-shell glass">
