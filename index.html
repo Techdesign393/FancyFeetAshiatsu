@@ -33,11 +33,11 @@
       color: var(--text);
       line-height: 1.6;
       background:
-        radial-gradient(circle at top left, rgba(184,156,124,.18), transparent 30%),
-        radial-gradient(circle at right 20%, rgba(127,143,134,.14), transparent 26%),
-        radial-gradient(circle at 92% 8%, rgba(126,156,121,.14), transparent 18%),
-        radial-gradient(circle at 6% 82%, rgba(168,184,145,.10), transparent 18%),
-        linear-gradient(180deg, #f7f5f0 0%, #f3f0ea 30%, #eee9e1 100%);
+        radial-gradient(circle at top left, rgba(184,156,124,.16), transparent 26%),
+        radial-gradient(circle at right 18%, rgba(127,143,134,.16), transparent 24%),
+        radial-gradient(circle at 92% 8%, rgba(126,156,121,.18), transparent 16%),
+        radial-gradient(circle at 6% 82%, rgba(168,184,145,.12), transparent 18%),
+        linear-gradient(180deg, #f8f5ef 0%, #f3efe8 32%, #eee8de 100%);
     }
 
     body::before {
@@ -55,11 +55,14 @@
       inset: 0;
       pointer-events: none;
       z-index: -1;
-      opacity: .65;
+      opacity: .85;
       background:
-        radial-gradient(ellipse at top right, rgba(118,148,108,.14), transparent 22%),
-        radial-gradient(ellipse at left center, rgba(150,173,128,.08), transparent 18%),
-        radial-gradient(ellipse at right bottom, rgba(126,156,121,.10), transparent 20%);
+        radial-gradient(ellipse at top right, rgba(118,148,108,.16), transparent 18%),
+        radial-gradient(ellipse at 8% 22%, rgba(148,168,120,.10), transparent 16%),
+        radial-gradient(ellipse at right bottom, rgba(126,156,121,.12), transparent 18%),
+        radial-gradient(ellipse at 10% 92%, rgba(170,184,150,.10), transparent 14%),
+        linear-gradient(135deg, transparent 0 82%, rgba(173, 186, 150, .08) 82% 84%, transparent 84%),
+        linear-gradient(45deg, transparent 0 88%, rgba(184,156,124,.06) 88% 90%, transparent 90%);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -76,6 +79,18 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top right, rgba(127,143,134,.07), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(184,156,124,.06), transparent 18%);
     }
 
     header {
@@ -97,29 +112,16 @@
     .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 0;
       min-width: 0;
     }
 
     .brand-mark {
-      width: 168px;
-      height: 78px;
-      border-radius: 20px;
-      background: rgba(255,255,255,.55);
-      padding: 0;
-      box-shadow: var(--shadow-soft);
-      flex: 0 0 auto;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.55);
+      display: none;
     }
 
     .brand-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      display: none;
     }
 
     .brand-text {
@@ -139,30 +141,84 @@
       font-size: .82rem;
     }
 
-    .logo-banner {
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.5));
-      box-shadow: var(--shadow-soft);
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 16px;
-      border: 1px solid rgba(255,255,255,.55);
+      gap: 8px;
+      color: var(--accent-deep);
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(95,114,104,.12);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .76rem;
+      width: fit-content;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: .98;
+      margin: 18px 0 18px;
+      max-width: 10ch;
+    }
+
+    .lead {
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .badge {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.58);
+      border: 1px solid rgba(95,114,104,.1);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .badge strong {
+      display: block;
+      font-size: .92rem;
+      margin-bottom: 4px;
+    }
+
+    .badge span {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .logo-banner {
+      display: none;
     }
 
     .logo-banner img {
-      width: 220px;
-      max-width: 100%;
-      border-radius: 18px;
-      display: block;
-      box-shadow: 0 16px 30px rgba(35, 44, 39, .14);
+      display: none;
     }
 
     .logo-banner span {
-      color: var(--muted);
-      font-size: .92rem;
-      max-width: 28ch;
+      display: none;
     }
 
     .nav-links {
@@ -380,38 +436,23 @@
     }
 
     .service-feature-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 18px;
+      display: none;
     }
 
     .service-feature-card {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 18px 20px;
-      border-radius: 26px;
+      display: none;
     }
 
     .service-feature-card img {
-      width: 124px;
-      height: 86px;
-      object-fit: cover;
-      border-radius: 18px;
-      flex: 0 0 auto;
-      box-shadow: 0 12px 22px rgba(35, 44, 39, .12);
+      display: none;
     }
 
     .service-feature-copy strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 4px;
+      display: none;
     }
 
     .service-feature-copy span {
-      color: var(--muted);
-      font-size: .94rem;
+      display: none;
     }
 
     .details-grid {
@@ -690,9 +731,6 @@
     <div class="container">
       <div class="nav-shell glass">
         <div class="brand-wrap">
-          <div class="brand-mark">
-            <img src="april-logo.png" alt="April Winsbury LMT logo" />
-          </div>
           <div class="brand-text">
             <p class="brand-title">April Winsbury LMT</p>
             <p class="brand-subtitle">Where healing meets relaxation • Austin, Texas</p>
@@ -718,10 +756,6 @@
           <p class="lead">
             April Winsbury is a licensed massage therapist in Austin offering customized sessions including Ashiatsu (DeepFeet) barefoot massage, Swedish relaxation massage, prenatal massage, and specialty therapeutic sessions designed to reduce tension and restore balance.
           </p>
-          <div class="logo-banner">
-            <img src="april-logo.png" alt="April Winsbury LMT logo banner" />
-            <span>Her real branding is stronger than generic spa graphics, so it deserves a featured place in the design.</span>
-          </div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://aprilwinsbury.fullslate.com/" target="_blank" rel="noopener noreferrer">Book Online</a>
             <a class="btn btn-secondary" href="#services">Explore Services</a>
@@ -811,23 +845,6 @@
             <span class="price">First visit • $160</span>
           </article>
                 </div>
-
-        <div class="service-feature-row">
-          <article class="service-feature-card glass">
-            <img src="april-logo.png" alt="April Winsbury LMT logo feature card" />
-            <div class="service-feature-copy">
-              <strong>Signature brand detail</strong>
-              <span>This gives her logo its own polished moment without cluttering the main service grid.</span>
-            </div>
-          </article>
-          <article class="service-feature-card glass">
-            <img src="april-logo.png" alt="April Winsbury LMT brand plaque" />
-            <div class="service-feature-copy">
-              <strong>Soft botanical spa feel</strong>
-              <span>The subtle plant-like background accents add texture and warmth without making the page look busy.</span>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
 
