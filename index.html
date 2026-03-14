@@ -140,7 +140,13 @@
       padding:14px;
       box-shadow:0 22px 56px rgba(44,56,49,.18);
       border:1px solid rgba(255,255,255,.95);
-      transition: width .28s ease, padding .28s ease, border-radius .28s ease, box-shadow .28s ease, transform .28s ease;
+      transition: width .28s ease, padding .28s ease, border-radius .28s ease, box-shadow .28s ease, transform .28s ease, opacity .24s ease;
+    }
+
+    .floating-logo.is-hidden{
+      opacity:0;
+      transform:translateY(-18px);
+      pointer-events:none;
     }
 
     .floating-logo.is-compact{
@@ -731,6 +737,10 @@
         width:min(240px, 64vw);
       }
 
+      .floating-logo.is-hidden{
+        display:none;
+      }
+
       .brand-mark {
         width: 132px;
         min-width: 132px;
@@ -1088,8 +1098,12 @@
     const floatingLogo = document.getElementById('floatingLogo');
     const updateFloatingLogo = () => {
       if (!floatingLogo) return;
-      const compact = window.scrollY > 80;
+      const y = window.scrollY;
+      const compact = y > 80;
+      const isMobile = window.innerWidth <= 760;
+      const hideOnMobile = isMobile && y > 120;
       floatingLogo.classList.toggle('is-compact', compact);
+      floatingLogo.classList.toggle('is-hidden', hideOnMobile);
     };
 
     updateFloatingLogo();
