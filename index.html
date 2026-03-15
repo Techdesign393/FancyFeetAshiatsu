@@ -4,8 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>April Winsbury LMT | Therapeutic Massage in Austin, TX</title>
-  <meta name="description" content="April Winsbury, LMT offers therapeutic massage in Austin, Texas with customized sessions for relaxation, recovery, prenatal care, and wellness." />
+  <meta
+    name="description"
+    content="April Winsbury, LMT offers therapeutic massage in Austin, Texas with customized sessions for relaxation, Ashiatsu, prenatal care, and wellness."
+  />
   <meta name="theme-color" content="#7f8f86" />
+  <meta property="og:title" content="April Winsbury LMT | Therapeutic Massage in Austin, TX" />
+  <meta
+    property="og:description"
+    content="Customized massage therapy in Austin, Texas for relaxation, recovery, prenatal support, and wellness."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="april-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root {
       --bg: #f3f0ea;
@@ -23,10 +34,14 @@
       --radius: 28px;
       --radius-sm: 18px;
       --max: 1180px;
+      --header-offset: 12px;
+      --logo-width: min(440px, 72vw);
+      --logo-width-compact: min(220px, 42vw);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -51,7 +66,6 @@
     }
 
     body::after {
-      /* botanical / bamboo atmosphere layer */
       content: "";
       position: fixed;
       inset: 0;
@@ -70,6 +84,21 @@
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      background: #fff;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      z-index: 100;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .skip-link:focus { top: 16px; }
 
     .container {
       width: min(100% - 32px, var(--max));
@@ -95,6 +124,55 @@
         radial-gradient(circle at top right, rgba(127,143,134,.10), transparent 28%),
         radial-gradient(circle at bottom left, rgba(184,156,124,.10), transparent 24%),
         linear-gradient(160deg, transparent 0 80%, rgba(150,170,130,.06) 80% 82%, transparent 82%);
+    }
+
+    .logo-layer {
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      pointer-events: none;
+      padding-top: 12px;
+    }
+
+    .floating-logo {
+      width: var(--logo-width);
+      margin: 0 auto;
+      background: rgba(255,255,255,.9);
+      border-radius: 34px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.95);
+      box-shadow: 0 22px 56px rgba(44,56,49,.18);
+      transition:
+        width .28s ease,
+        padding .28s ease,
+        border-radius .28s ease,
+        box-shadow .28s ease,
+        opacity .22s ease,
+        transform .28s ease;
+      transform: translate3d(0, 0, 0);
+      will-change: transform, opacity, width;
+      pointer-events: auto;
+    }
+
+    .floating-logo.is-compact {
+      width: var(--logo-width-compact);
+      padding: 10px 12px;
+      border-radius: 22px;
+      box-shadow: 0 16px 34px rgba(44,56,49,.14);
+    }
+
+    .floating-logo.is-hidden {
+      opacity: 0;
+      transform: translate3d(0, -14px, 0);
+      pointer-events: none;
+    }
+
+    .floating-logo img {
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.08));
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
     }
 
     header {
@@ -124,51 +202,7 @@
       min-width: 0;
     }
 
-    .brand-mark {
-      display:none;
-    }
-
-    .floating-logo{
-      position:sticky;
-      top:14px;
-      left:0;
-      width:min(520px, 88vw);
-      margin:18px auto 8px;
-      z-index:70;
-      background:rgba(255,255,255,.9);
-      border-radius:36px;
-      padding:14px;
-      box-shadow:0 22px 56px rgba(44,56,49,.18);
-      border:1px solid rgba(255,255,255,.95);
-      transition: width .28s ease, padding .28s ease, border-radius .28s ease, box-shadow .28s ease, transform .28s ease, opacity .24s ease;
-    }
-
-    .floating-logo.is-hidden{
-      opacity:0;
-      transform:translateY(-18px);
-      pointer-events:none;
-    }
-
-    .floating-logo.is-compact{
-      width:min(250px, 56vw);
-      padding:10px;
-      border-radius:24px;
-      box-shadow:0 16px 34px rgba(44,56,49,.14);
-    }
-    }
-
-    .floating-logo img{
-      filter:drop-shadow(0 6px 10px rgba(0,0,0,.08));
-      width:100%;
-      height:auto;
-      object-fit:contain;
-      display:block;
-      border-radius:20px;
-    }
-
-    .brand-text {
-      min-width: 0;
-    }
+    .brand-text { min-width: 0; }
 
     .brand-title {
       font-size: 1.2rem;
@@ -252,18 +286,6 @@
       font-size: .9rem;
     }
 
-    .logo-banner {
-      display: none;
-    }
-
-    .logo-banner img {
-      display: none;
-    }
-
-    .logo-banner span {
-      display: none;
-    }
-
     .nav-links {
       display: flex;
       align-items: center;
@@ -272,12 +294,12 @@
       color: var(--muted);
       font-size: .95rem;
       margin-left: auto;
-      padding-right: 0;
     }
 
-    
-
-    .nav-links a:hover { color: var(--accent-deep); }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--accent-deep);
+    }
 
     .btn {
       display: inline-flex;
@@ -292,6 +314,13 @@
     }
 
     .btn:hover { transform: translateY(-2px); }
+
+    .btn:focus-visible,
+    .nav-links a:focus-visible,
+    .contact-item a:focus-visible {
+      outline: 3px solid rgba(95,114,104,.28);
+      outline-offset: 3px;
+    }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-deep));
@@ -309,9 +338,7 @@
       background: rgba(255,255,255,.55);
     }
 
-    .hero {
-      padding: 34px 0 26px;
-    }
+    .hero { padding: 34px 0 26px; }
 
     .hero-shell {
       display: grid;
@@ -327,14 +354,7 @@
       gap: 18px;
       position: relative;
       overflow: hidden;
-    }
-
-    .corner-brand {
-      display: none;
-    }
-
-    .corner-brand img {
-      display: none;
+      padding: 28px;
     }
 
     .hero-visual::before {
@@ -354,21 +374,21 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .hero-image::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
         radial-gradient(circle at 10% 10%, rgba(120,160,120,.15), transparent 45%),
         radial-gradient(circle at 90% 30%, rgba(170,200,150,.12), transparent 45%);
     }
 
     .hero-image::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background:
         radial-gradient(circle at 20% 15%, rgba(170,190,150,.18), transparent 40%),
         radial-gradient(circle at 85% 90%, rgba(184,156,124,.18), transparent 40%);
@@ -402,9 +422,7 @@
       color: rgba(255,255,255,.84);
     }
 
-    section {
-      padding: 32px 0;
-    }
+    section { padding: 32px 0; }
 
     .section-head {
       display: flex;
@@ -426,7 +444,8 @@
       max-width: 68ch;
     }
 
-    .services-grid {
+    .services-grid,
+    .reviews-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
@@ -451,7 +470,7 @@
       height: 140px;
       border-radius: 999px;
       background: radial-gradient(circle, rgba(184,156,124,.22), transparent 70%);
-      opacity:.9;
+      opacity: .9;
     }
 
     .service-label {
@@ -472,7 +491,9 @@
       font-size: 1.4rem;
     }
 
-    .service-card p {
+    .service-card p,
+    .review-card p,
+    .about-card p {
       margin: 0 0 14px;
       color: var(--muted);
     }
@@ -489,27 +510,8 @@
       font-size: .95rem;
     }
 
-    .service-feature-row {
-      display: none;
-    }
-
-    .service-feature-card {
-      display: none;
-    }
-
-    .service-feature-card img {
-      display: none;
-    }
-
-    .service-feature-copy strong {
-      display: none;
-    }
-
-    .service-feature-copy span {
-      display: none;
-    }
-
-    .details-grid {
+    .details-grid,
+    .contact-shell {
       display: grid;
       grid-template-columns: .95fr 1.05fr;
       gap: 20px;
@@ -517,7 +519,9 @@
     }
 
     .portrait-card,
-    .about-card {
+    .about-card,
+    .contact-card,
+    .booking-card {
       border-radius: calc(var(--radius) + 4px);
       overflow: hidden;
     }
@@ -553,17 +557,13 @@
       font-size: 1.05rem;
     }
 
-    .about-card {
-      padding: 32px;
+    .about-card,
+    .contact-card,
+    .booking-card {
+      padding: 30px;
       display: flex;
       flex-direction: column;
       gap: 18px;
-    }
-
-    .about-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
     }
 
     .highlights {
@@ -573,28 +573,26 @@
       margin-top: 8px;
     }
 
-    .highlight-item {
+    .highlight-item,
+    .contact-item {
       padding: 18px;
       border-radius: 22px;
       background: rgba(255,255,255,.58);
       border: 1px solid rgba(95,114,104,.1);
     }
 
-    .highlight-item strong {
+    .highlight-item strong,
+    .contact-item strong {
       display: block;
       margin-bottom: 4px;
       font-size: .98rem;
     }
 
-    .highlight-item span {
+    .highlight-item span,
+    .contact-item span,
+    .contact-item a,
+    .hours-list {
       color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
     }
 
     .review-card {
@@ -611,53 +609,11 @@
       font-weight: 700;
     }
 
-    .review-card p {
-      margin: 0;
-      color: var(--muted);
-      flex: 1;
-    }
-
-    .contact-shell {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 20px;
-    }
-
-    .contact-card,
-    .booking-card {
-      border-radius: calc(var(--radius) + 4px);
-      padding: 30px;
-    }
-
-    .contact-list {
+    .contact-list,
+    .hours-list {
       display: grid;
       gap: 14px;
       margin-top: 18px;
-    }
-
-    .contact-item {
-      padding: 18px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.6);
-      border: 1px solid rgba(95,114,104,.1);
-    }
-
-    .contact-item strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: .94rem;
-    }
-
-    .contact-item span,
-    .contact-item a {
-      color: var(--muted);
-    }
-
-    .hours-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-      color: var(--muted);
     }
 
     .hours-row {
@@ -670,12 +626,10 @@
 
     .booking-note {
       color: var(--muted);
-      margin: 12px 0 22px;
+      margin: 0 0 4px;
     }
 
-    .footer {
-      padding: 18px 0 42px;
-    }
+    .footer { padding: 18px 0 42px; }
 
     .footer-shell {
       padding: 18px 22px;
@@ -689,86 +643,56 @@
     }
 
     @media (max-width: 1080px) {
-      .nav-links {
-        padding-right: 0;
-      }
-
-      .brand-mark {
-        width: 148px;
-        min-width: 148px;
-        height: 82px;
-      }
-
-      .service-feature-row {
-        grid-template-columns: 1fr;
-      }
-
-      .corner-brand {
-        width: 210px;
-      }
-
-      .hero-shell,
-      .details-grid,
-      .contact-shell,
-      .services-grid,
-      .reviews-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .hero-shell,
       .details-grid,
       .contact-shell {
         grid-template-columns: 1fr;
       }
 
+      .services-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .portrait-card {
         min-height: 520px;
+      }
+
+      :root {
+        --logo-width: min(360px, 64vw);
+        --logo-width-compact: min(200px, 38vw);
       }
     }
 
     @media (max-width: 760px) {
-      .floating-logo{
-        width:min(92vw, 420px);
-        margin:12px auto 6px;
-        top:8px;
+      :root {
+        --logo-width: min(84vw, 340px);
+        --logo-width-compact: min(84vw, 340px);
       }
 
-      .floating-logo.is-compact{
-        width:min(240px, 64vw);
-      }
-
-      .floating-logo.is-hidden{
-        display:none;
-      }
-
-      .brand-mark {
-        width: 132px;
-        min-width: 132px;
-        height: 74px;
-        margin-right: 0;
-      }
-
-      .page-corner-logo {
+      .logo-layer {
         position: static;
-        width: 100%;
-        max-width: none;
-        margin: 0 auto 12px;
+        padding-top: 10px;
       }
 
-      .nav-links {
-        padding-right: 0;
+      .floating-logo {
+        position: relative;
+        top: auto;
+        margin: 0 auto 10px;
+        padding: 12px 14px;
+        border-radius: 24px;
+        transform: none !important;
+        opacity: 1 !important;
       }
 
-      .corner-brand {
-        position: static;
-        width: 100%;
-        max-width: none;
-        margin-bottom: 8px;
-      }
-
-      .service-feature-card {
-        flex-direction: column;
-        align-items: flex-start;
+      .floating-logo.is-compact,
+      .floating-logo.is-hidden {
+        width: var(--logo-width);
+        padding: 12px 14px;
+        border-radius: 24px;
+        box-shadow: 0 16px 34px rgba(44,56,49,.14);
+        display: block;
+        pointer-events: auto;
       }
 
       header {
@@ -820,25 +744,36 @@
         gap: 4px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="floating-logo" id="floatingLogo">
-    <img src="april-logo.png" alt="April Winsbury LMT Logo" />
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="logo-layer" aria-hidden="true">
+    <div class="floating-logo" id="floatingLogo">
+      <img src="april-logo.png" alt="April Winsbury LMT logo" loading="eager" decoding="async" />
+    </div>
   </div>
+
   <header>
     <div class="container">
       <div class="nav-shell glass">
         <div class="brand-wrap">
-          <div class="brand-mark">
-            <img src="april-logo.png" alt="April Winsbury LMT logo" />
-          </div>
           <div class="brand-text">
             <p class="brand-title">April Winsbury LMT</p>
             <p class="brand-subtitle">Where healing meets relaxation • Austin, Texas</p>
           </div>
         </div>
-        <nav class="nav-links">
+
+        <nav class="nav-links" aria-label="Primary navigation">
           <a href="#services">Services</a>
           <a href="#about">About</a>
           <a href="#reviews">Reviews</a>
@@ -849,14 +784,14 @@
     </div>
   </header>
 
-  <main>
-    <section class="hero">
+  <main id="main-content">
+    <section class="hero" aria-label="Introduction">
       <div class="container hero-shell">
         <div class="hero-copy glass">
           <div class="eyebrow">Relaxation • Recovery • Restoration</div>
           <h1>Personalized massage in a calm, polished spa setting.</h1>
           <p class="lead">
-            April Winsbury is a licensed massage therapist in Austin offering customized sessions including Ashiatsu (DeepFeet) barefoot massage, Swedish relaxation massage, prenatal massage, and specialty therapeutic sessions designed to reduce tension and restore balance.
+            April Winsbury is a licensed massage therapist in Austin offering customized sessions including Ashiatsu barefoot massage, Swedish massage, prenatal massage, and therapeutic sessions designed to reduce tension and restore balance.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://aprilwinsbury.fullslate.com/" target="_blank" rel="noopener noreferrer">Book Online</a>
@@ -869,18 +804,18 @@
             </div>
             <div class="badge">
               <strong>Contact</strong>
-              <span>(512) 629-7767</span>
+              <span><a href="tel:+15126297767">(512) 629-7767</a></span>
             </div>
             <div class="badge">
               <strong>Hours</strong>
-              <span>Tue, Thu, Fri & Sat • 9:30 AM–7 PM</span>
+              <span>Tue, Thu, Fri &amp; Sat • 9:30 AM–7 PM</span>
             </div>
           </div>
         </div>
 
         <div class="hero-visual glass">
           <div class="hero-image">
-            <img src="april.jpg" alt="April Winsbury Licensed Massage Therapist" />
+            <img src="april.jpg" alt="April Winsbury, licensed massage therapist" loading="eager" decoding="async" />
             <div class="hero-overlay">
               <strong>Warm, customized care</strong>
               <span>Professional massage for relaxation, recovery, and wellness in Austin.</span>
@@ -890,13 +825,13 @@
       </div>
     </section>
 
-    <section id="services">
+    <section id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2 class="section-title">Signature services</h2>
+            <h2 class="section-title" id="services-title">Signature services</h2>
             <p class="section-copy">
-              A refined service menu inspired by April’s current online booking page, with a cleaner presentation that still highlights her real offerings and specialties.
+              Thoughtfully tailored sessions focused on comfort, recovery, and full-body relaxation.
             </p>
           </div>
         </div>
@@ -912,69 +847,69 @@
           <article class="card glass service-card">
             <span class="service-label">Therapeutic</span>
             <h3>Ashiatsu (DeepFeet) Massage</h3>
-            <p>Full body barefoot massage where the therapist uses overhead bars and controlled foot pressure to deliver deep, broad, relaxing strokes that release tension and sore muscles.</p>
+            <p>Full-body barefoot massage using overhead bars and controlled foot pressure to deliver deep, broad, relaxing strokes that release tension and sore muscles.</p>
             <span class="price">60 minutes • $120</span>
           </article>
 
           <article class="card glass service-card">
             <span class="service-label">Prenatal Care</span>
             <h3>Prenatal Massage</h3>
-            <p>Gentle, supportive bodywork designed around the specific comfort needs of an expectant mother in a safe, relaxing environment.</p>
+            <p>Gentle, supportive bodywork designed around the comfort needs of an expectant mother in a safe, relaxing environment.</p>
             <span class="price">60 minutes • $120</span>
           </article>
 
           <article class="card glass service-card">
             <span class="service-label">Custom</span>
             <h3>90-Minute Customized Session</h3>
-            <p>A longer, more immersive session ideal for full-body tension relief, focused problem areas, and deeper relaxation.</p>
+            <p>A longer session ideal for full-body tension relief, focused problem areas, and deeper relaxation.</p>
             <span class="price">90 minutes • $180</span>
           </article>
 
           <article class="card glass service-card">
             <span class="service-label">Special Occasion</span>
             <h3>Birthday Massage</h3>
-            <p>A 90-minute birthday session that can be used during the birthday month with a massage style customized to the client.</p>
+            <p>A 90-minute birthday session customized to the client and available during the birthday month.</p>
             <span class="price">90 minutes • $150</span>
           </article>
 
           <article class="card glass service-card">
             <span class="service-label">New Clients</span>
             <h3>Introductory 90-Minute Session</h3>
-            <p>A welcoming first visit that gives new clients time to unwind, communicate their goals, and experience a fuller customized session.</p>
+            <p>A welcoming first visit with extra time to unwind, discuss goals, and enjoy a fuller customized session.</p>
             <span class="price">First visit • $160</span>
           </article>
-                </div>
+        </div>
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" aria-labelledby="about-title">
       <div class="container details-grid">
         <div class="portrait-card glass">
-          <img src="april.jpg" alt="Portrait of April Winsbury, Licensed Massage Therapist" />
+          <img src="april.jpg" alt="Portrait of April Winsbury, licensed massage therapist" loading="lazy" decoding="async" />
           <div class="portrait-note">
             <strong>April Winsbury, LMT</strong>
-            <span>Focused on thoughtful, customized bodywork that helps each client feel cared for, comfortable, and restored.</span>
+            <span>Thoughtful, customized bodywork that helps clients feel cared for, comfortable, and restored.</span>
           </div>
         </div>
 
         <div class="about-card glass">
           <div>
-            <h2 class="section-title">A more elevated, client-centered experience</h2>
+            <h2 class="section-title" id="about-title">A client-centered experience from start to finish</h2>
             <p>
-              April’s practice is built around personalization, comfort, and genuine care. Instead of a rushed or one-size-fits-all appointment, each session is shaped around the client’s goals, stress patterns, and preferred pressure.
+              April’s practice is built around personalization, comfort, and genuine care. Each session is shaped around the client’s goals, stress patterns, and preferred pressure.
             </p>
           </div>
           <p>
             Her work blends relaxation and therapeutic intention, creating a calming experience that still delivers meaningful bodywork. Clients can book for everyday stress relief, focused muscular tension, prenatal support, or a deeper reset through Ashiatsu.
           </p>
           <p>
-            This spa-style website is designed to make the business feel more premium right away, which matters because people judge quality fast based on presentation.
+            From online scheduling to a welcoming treatment environment, the experience is designed to feel simple, warm, and professional.
           </p>
 
           <div class="highlights">
             <div class="highlight-item">
               <strong>Online scheduling</strong>
-              <span>Clients can book directly through Full Slate with a fast, simple online scheduler.</span>
+              <span>Book directly through Full Slate with a fast, simple online scheduler.</span>
             </div>
             <div class="highlight-item">
               <strong>Gift certificates</strong>
@@ -993,50 +928,53 @@
       </div>
     </section>
 
-    <section id="reviews">
+    <section id="reviews" aria-labelledby="reviews-title">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2 class="section-title">What clients can expect</h2>
+            <h2 class="section-title" id="reviews-title">Client feedback</h2>
             <p class="section-copy">
-              These can be replaced later with real Google reviews, but the layout already gives the site a polished trust-building section.
+              Replace these placeholders with real client reviews when available.
             </p>
           </div>
         </div>
+
         <div class="reviews-grid">
           <article class="card glass review-card">
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <h3>Deeply relaxing and professional</h3>
             <p>From the atmosphere to the session itself, everything feels calm, thoughtful, and genuinely restorative.</p>
-            <strong>— Future Google Review</strong>
+            <strong>— Placeholder review</strong>
           </article>
+
           <article class="card glass review-card">
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <h3>Exactly the right pressure and care</h3>
             <p>The session feels customized instead of generic, which makes the experience stand out immediately.</p>
-            <strong>— Future Google Review</strong>
+            <strong>— Placeholder review</strong>
           </article>
+
           <article class="card glass review-card">
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <h3>A place I would book again</h3>
             <p>Clients should feel welcomed, comfortable, and well taken care of from the first message to the end of the appointment.</p>
-            <strong>— Future Google Review</strong>
+            <strong>— Placeholder review</strong>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
       <div class="container contact-shell">
         <div class="contact-card glass">
-          <h2 class="section-title">Contact & location</h2>
+          <h2 class="section-title" id="contact-title">Contact &amp; location</h2>
           <p class="section-copy">
-            Make it effortless for people to reach out. Friction kills bookings.
+            Reach out directly or book online in just a few clicks.
           </p>
           <div class="contact-list">
             <div class="contact-item">
               <strong>Email</strong>
-              <span>Booking handled through the online scheduler or by phone.</span>
+              <span>Booking is handled through the online scheduler or by phone.</span>
             </div>
             <div class="contact-item">
               <strong>Phone</strong>
@@ -1058,9 +996,9 @@
         </div>
 
         <div class="booking-card glass">
-          <h2 class="section-title">Hours & booking</h2>
+          <h2 class="section-title">Hours &amp; booking</h2>
           <p class="booking-note">
-            The call to action should always be obvious. People should know exactly how to book within seconds.
+            Choose a time online or call directly for questions.
           </p>
 
           <div class="hours-list">
@@ -1076,7 +1014,6 @@
           <div class="hero-actions" style="margin-top: 24px; margin-bottom: 0;">
             <a class="btn btn-primary" href="https://aprilwinsbury.fullslate.com/" target="_blank" rel="noopener noreferrer">Book Online</a>
             <a class="btn btn-secondary" href="tel:+15126297767">Call Now</a>
-            
           </div>
         </div>
       </div>
@@ -1096,19 +1033,44 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const floatingLogo = document.getElementById('floatingLogo');
-    const updateFloatingLogo = () => {
-      if (!floatingLogo) return;
-      const y = window.scrollY;
-      const compact = y > 80;
-      const isMobile = window.innerWidth <= 760;
-      const hideOnMobile = isMobile && y > 120;
-      floatingLogo.classList.toggle('is-compact', compact);
-      floatingLogo.classList.toggle('is-hidden', hideOnMobile);
-    };
+    let lastMobileState = window.innerWidth <= 760;
+    let ticking = false;
 
-    updateFloatingLogo();
-    window.addEventListener('scroll', updateFloatingLogo, { passive: true });
-    window.addEventListener('resize', updateFloatingLogo);
+    function syncFloatingLogo() {
+      if (!floatingLogo) return;
+
+      const isMobile = window.innerWidth <= 760;
+      const y = window.scrollY || window.pageYOffset;
+
+      if (isMobile) {
+        floatingLogo.classList.remove('is-compact', 'is-hidden');
+        return;
+      }
+
+      floatingLogo.classList.toggle('is-compact', y > 70);
+      floatingLogo.classList.remove('is-hidden');
+    }
+
+    function requestLogoSync() {
+      if (ticking) return;
+      ticking = true;
+
+      window.requestAnimationFrame(() => {
+        syncFloatingLogo();
+        ticking = false;
+      });
+    }
+
+    syncFloatingLogo();
+
+    window.addEventListener('scroll', requestLogoSync, { passive: true });
+    window.addEventListener('resize', () => {
+      const isMobile = window.innerWidth <= 760;
+      if (isMobile !== lastMobileState) {
+        lastMobileState = isMobile;
+      }
+      requestLogoSync();
+    });
   </script>
 </body>
 </html>
